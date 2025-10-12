@@ -1,0 +1,874 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Service API Document",
+    "version": "0.1"
+  },
+  "definitions": {
+    "_AppStoreAppInfoListResp": {
+      "properties": {
+        "asai_id": {
+          "description": "\u4e3b\u952e",
+          "title": "Asai Id",
+          "type": "integer"
+        },
+        "audit_state": {
+          "description": "\u5ba1\u6838\u72b6\u6001",
+          "title": "Audit State",
+          "type": "string"
+        },
+        "bundleid": {
+          "description": "bundleid",
+          "title": "Bundleid",
+          "type": "string"
+        },
+        "creator": {
+          "description": "\u521b\u5efa\u4eba",
+          "title": "Creator",
+          "type": "string"
+        },
+        "creator_email": {
+          "description": "\u521b\u5efa\u4eba\u90ae\u7bb1",
+          "title": "Creator Email",
+          "type": "string"
+        },
+        "fee_code": {
+          "description": "\u8ba1\u8d39\u4ee3\u53f7(gameid)",
+          "title": "Fee Code",
+          "type": "string"
+        },
+        "operation_code": {
+          "description": "\u8fd0\u8425\u4ee3\u53f7",
+          "title": "Operation Code",
+          "type": "string"
+        },
+        "release_account": {
+          "description": "\u53d1\u884c\u8d26\u53f7",
+          "title": "Release Account",
+          "type": "string"
+        },
+        "state": {
+          "description": "\u72b6\u6001(1.\u7f16\u8f91\u4e2d, 2.\u5df2\u63a8\u9001)",
+          "title": "State",
+          "type": "string"
+        },
+        "updatetime": {
+          "description": "\u66f4\u65b0\u65f6\u95f4",
+          "title": "Updatetime",
+          "type": "string"
+        },
+        "version": {
+          "description": "\u7248\u672c\u53f7",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asai_id",
+        "version",
+        "updatetime",
+        "creator",
+        "creator_email",
+        "state",
+        "audit_state",
+        "fee_code",
+        "operation_code",
+        "bundleid",
+        "release_account"
+      ],
+      "title": "_AppStoreAppInfoListResp",
+      "type": "object"
+    },
+    "_AppStoreAppInfoResp": {
+      "properties": {
+        "app_id": {
+          "description": "store\u5185\u8d2dAPP_ID",
+          "title": "App Id",
+          "type": "string"
+        },
+        "app_store_app_builds": {
+          "description": "\u5173\u8054\u5305\u4f53(\u6784\u5efa\u7248\u672c)",
+          "items": {
+            "$ref": "#/definitions/RelaAppStoreAppBuild"
+          },
+          "title": "App Store App Builds",
+          "type": "array"
+        },
+        "asai_id": {
+          "description": "\u4e3b\u952e",
+          "title": "Asai Id",
+          "type": "integer"
+        },
+        "check_time": {
+          "description": "\u6700\u540e\u6838\u5bf9\u65f6\u95f4",
+          "title": "Check Time",
+          "type": "string"
+        },
+        "check_user": {
+          "description": "\u6838\u5bf9\u4eba",
+          "title": "Check User",
+          "type": "string"
+        },
+        "check_user_email": {
+          "description": "\u6838\u5bf9\u4eba email",
+          "title": "Check User Email",
+          "type": "string"
+        },
+        "check_user_id": {
+          "description": "\u6838\u5bf9\u4eba id",
+          "title": "Check User Id",
+          "type": "integer"
+        },
+        "contact_email": {
+          "description": "\u5ba1\u6838\u4fe1\u606f\u8054\u7cfb\u4eba\u90ae\u7bb1",
+          "title": "Contact Email",
+          "type": "string"
+        },
+        "contact_firstname": {
+          "description": "\u5ba1\u6838\u4fe1\u606f\u8054\u7cfb\u4eba\u59d3",
+          "title": "Contact Firstname",
+          "type": "string"
+        },
+        "contact_lastname": {
+          "description": "\u5ba1\u6838\u4fe1\u606f\u8054\u7cfb\u4eba\u540d",
+          "title": "Contact Lastname",
+          "type": "string"
+        },
+        "contact_phone": {
+          "description": "\u5ba1\u6838\u4fe1\u606f\u8054\u7cfb\u4eba\u7535\u8bdd",
+          "title": "Contact Phone",
+          "type": "string"
+        },
+        "copyright": {
+          "description": "\u7248\u6743",
+          "title": "Copyright",
+          "type": "string"
+        },
+        "createtime": {
+          "description": "\u521b\u5efa\u65f6\u95f4",
+          "title": "Createtime",
+          "type": "string"
+        },
+        "creator": {
+          "description": "\u521b\u5efa\u4eba",
+          "title": "Creator",
+          "type": "string"
+        },
+        "creator_email": {
+          "description": "\u521b\u5efa\u4eba email",
+          "title": "Creator Email",
+          "type": "string"
+        },
+        "creator_id": {
+          "description": "\u521b\u5efa\u4eba id",
+          "title": "Creator Id",
+          "type": "integer"
+        },
+        "data": {
+          "additionalProperties": {
+            "$ref": "#/definitions/AppStoreAppInfoData"
+          },
+          "description": "key: \u8bed\u8a00, value: \u6570\u636e",
+          "title": "Data",
+          "type": "object"
+        },
+        "demo_account_name": {
+          "description": "\u5ba1\u6838\u4fe1\u606f\u767b\u5f55\u8d26\u53f7",
+          "title": "Demo Account Name",
+          "type": "string"
+        },
+        "demo_account_password": {
+          "description": "\u5ba1\u6838\u4fe1\u606f\u767b\u5f55\u8d26\u53f7\u5bc6\u7801",
+          "title": "Demo Account Password",
+          "type": "string"
+        },
+        "demo_account_required": {
+          "description": "\u5ba1\u6838\u4fe1\u606f\u662f\u5426\u9700\u8981\u767b\u5f55",
+          "title": "Demo Account Required",
+          "type": "string"
+        },
+        "demo_notes": {
+          "description": "\u5ba1\u6838\u4fe1\u606f\u5907\u6ce8",
+          "title": "Demo Notes",
+          "type": "string"
+        },
+        "fee_code": {
+          "description": "\u8ba1\u8d39\u4ee3\u53f7",
+          "title": "Fee Code",
+          "type": "string"
+        },
+        "gpg_id": {
+          "description": "\u6e38\u620f\u5206\u7ec4 id",
+          "title": "Gpg Id",
+          "type": "integer"
+        },
+        "gpi_id": {
+          "description": "\u6e38\u620f\u5730\u533a id",
+          "title": "Gpi Id",
+          "type": "integer"
+        },
+        "latest_asaid_id": {
+          "description": "\u6700\u65b0\u5feb\u7167 id",
+          "title": "Latest Asaid Id",
+          "type": "integer"
+        },
+        "note": {
+          "description": "\u5907\u6ce8",
+          "title": "Note",
+          "type": "string"
+        },
+        "operation_code": {
+          "description": "\u8fd0\u8425\u4ee3\u53f7",
+          "title": "Operation Code",
+          "type": "string"
+        },
+        "operator_email": {
+          "description": "\u64cd\u4f5c\u4eba email",
+          "title": "Operator Email",
+          "type": "string"
+        },
+        "operator_id": {
+          "description": "\u64cd\u4f5c\u4eba id",
+          "title": "Operator Id",
+          "type": "string"
+        },
+        "push_time": {
+          "description": "\u6700\u540e\u63a8\u9001\u65f6\u95f4",
+          "title": "Push Time",
+          "type": "string"
+        },
+        "push_user": {
+          "description": "\u63a8\u9001\u4eba",
+          "title": "Push User",
+          "type": "string"
+        },
+        "push_user_email": {
+          "description": "\u63a8\u9001\u4eba email",
+          "title": "Push User Email",
+          "type": "string"
+        },
+        "push_user_id": {
+          "description": "\u63a8\u9001\u4eba id",
+          "title": "Push User Id",
+          "type": "integer"
+        },
+        "revision": {
+          "description": "\u5feb\u7167\u7248\u672c",
+          "title": "Revision",
+          "type": "integer"
+        },
+        "state": {
+          "description": "\u72b6\u6001",
+          "title": "State",
+          "type": "string"
+        },
+        "updatetime": {
+          "description": "\u64cd\u4f5c\u65f6\u95f4",
+          "title": "Updatetime",
+          "type": "string"
+        },
+        "version": {
+          "description": "\u7248\u672c\u53f7",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asai_id",
+        "gpg_id",
+        "gpi_id",
+        "fee_code",
+        "operation_code",
+        "latest_asaid_id",
+        "creator_id",
+        "creator",
+        "creator_email",
+        "operator_id",
+        "operator_email",
+        "createtime",
+        "updatetime",
+        "app_id",
+        "copyright",
+        "version",
+        "revision",
+        "state",
+        "push_time",
+        "push_user_id",
+        "push_user",
+        "push_user_email",
+        "check_time",
+        "check_user_id",
+        "check_user",
+        "check_user_email",
+        "note",
+        "contact_firstname",
+        "contact_lastname",
+        "contact_phone",
+        "contact_email",
+        "demo_account_name",
+        "demo_account_password",
+        "demo_account_required",
+        "demo_notes",
+        "app_store_app_builds",
+        "data"
+      ],
+      "title": "_AppStoreAppInfoResp",
+      "type": "object"
+    },
+    "AppStoreAppInfoData": {
+      "properties": {
+        "description": {
+          "description": "\u63cf\u8ff0",
+          "title": "Description",
+          "type": "string"
+        },
+        "key_words": {
+          "description": "\u5173\u952e\u8bcd",
+          "title": "Key Words",
+          "type": "string"
+        },
+        "locale": {
+          "description": "\u8bed\u8a00",
+          "title": "Locale",
+          "type": "string"
+        },
+        "marketing_url": {
+          "description": "\u8425\u9500\u7f51\u5740",
+          "title": "Marketing Url",
+          "type": "string"
+        },
+        "promotional_text": {
+          "description": "\u63a8\u5e7f\u6587\u672c",
+          "title": "Promotional Text",
+          "type": "string"
+        },
+        "screenshots": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/AppStoreAppInfoDataScreenShot"
+            }
+          ],
+          "description": "\u9884\u89c8\u622a\u5c4f[{\"id\":1,\"screenshotDisplayType\":2,\"url\":3}]",
+          "title": "Screenshots"
+        },
+        "support_url": {
+          "description": "\u6280\u672f\u652f\u6301\u7f51\u7ad9",
+          "title": "Support Url",
+          "type": "string"
+        },
+        "whats_new": {
+          "description": "\u6b64\u7248\u672c\u65b0\u589e\u5185\u5bb9",
+          "title": "Whats New",
+          "type": "string"
+        }
+      },
+      "required": [
+        "locale",
+        "screenshots",
+        "promotional_text",
+        "description",
+        "whats_new",
+        "key_words",
+        "support_url",
+        "marketing_url"
+      ],
+      "title": "AppStoreAppInfoData",
+      "type": "object"
+    },
+    "AppStoreAppInfoDataScreenShot": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "screenshotDisplayType": {
+          "title": "Screenshotdisplaytype",
+          "type": "integer"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": ["id", "screenshotDisplayType", "url"],
+      "title": "AppStoreAppInfoDataScreenShot",
+      "type": "object"
+    },
+    "RelaAppStoreAppBuild": {
+      "properties": {
+        "build_version": {
+          "description": "\u6784\u5efa\u7248\u672c\u53f7(\u5957\u88c5\u7248\u672c\u5b57\u7b26\u4e32)",
+          "title": "Build Version",
+          "type": "string"
+        },
+        "icon": {
+          "description": "\u56fe\u6807 url",
+          "title": "Icon",
+          "type": "string"
+        },
+        "version": {
+          "description": "\u7248\u672c\u53f7(\u5957\u88c5\u7b80\u77ed\u7248\u672c\u5b57\u7b26\u4e32)",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": ["icon", "version", "build_version"],
+      "title": "RelaAppStoreAppBuild",
+      "type": "object"
+    },
+    "UnprocessableEntityElement": {
+      "description": "Model of missing field description.",
+      "properties": {
+        "ctx": {
+          "title": "Error context",
+          "type": "object"
+        },
+        "loc": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing field name",
+          "type": "array"
+        },
+        "msg": {
+          "title": "Error message",
+          "type": "string"
+        },
+        "type": {
+          "title": "Error type",
+          "type": "string"
+        }
+      },
+      "required": ["loc", "msg", "type"],
+      "title": "UnprocessableEntityElement",
+      "type": "object"
+    }
+  },
+  "components": {
+    "schemas": {
+      "AppStoreAppInfoListResp": {
+        "properties": {
+          "code": {
+            "default": "0000",
+            "title": "Code",
+            "type": "string"
+          },
+          "curpage": {
+            "title": "Curpage",
+            "type": "integer"
+          },
+          "data": {
+            "items": {
+              "$ref": "#/definitions/_AppStoreAppInfoListResp"
+            },
+            "title": "Data",
+            "type": "array"
+          },
+          "datacount": {
+            "title": "Datacount",
+            "type": "integer"
+          },
+          "max_index": {
+            "title": "Max Index",
+            "type": "integer"
+          },
+          "msg": {
+            "title": "Msg",
+            "type": "string"
+          },
+          "pagesize": {
+            "title": "Pagesize",
+            "type": "integer"
+          }
+        },
+        "required": ["curpage", "pagesize", "max_index", "datacount", "data"],
+        "title": "AppStoreAppInfoListResp",
+        "type": "object"
+      },
+      "DeleteAppStoreAppInfoResp": {
+        "properties": {
+          "code": {
+            "default": "0000",
+            "title": "Code",
+            "type": "string"
+          },
+          "msg": {
+            "title": "Msg",
+            "type": "string"
+          }
+        },
+        "title": "DeleteAppStoreAppInfoResp",
+        "type": "object"
+      },
+      "AppStoreAppInfoResp": {
+        "properties": {
+          "code": {
+            "default": "0000",
+            "title": "Code",
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/definitions/_AppStoreAppInfoResp"
+          },
+          "msg": {
+            "title": "Msg",
+            "type": "string"
+          }
+        },
+        "required": ["data"],
+        "title": "AppStoreAppInfoResp",
+        "type": "object"
+      },
+      "EditAppStoreAppInfoResp": {
+        "properties": {
+          "code": {
+            "default": "0000",
+            "title": "Code",
+            "type": "string"
+          },
+          "msg": {
+            "title": "Msg",
+            "type": "string"
+          }
+        },
+        "title": "EditAppStoreAppInfoResp",
+        "type": "object"
+      },
+      "UnprocessableEntity": {
+        "description": "Model of 422 Unprocessable Entity error.",
+        "items": {
+          "$ref": "#/definitions/UnprocessableEntityElement"
+        },
+        "title": "UnprocessableEntity",
+        "type": "array"
+      }
+    }
+  },
+  "paths": {
+    "/jellyplus-admin/channel-backend/appstore-app-info-list": {
+      "get": {
+        "description": "get_appstore_app_info_list\n\nendpoint: <b>jellyplus_admin.channel_backend.get_appstore_app_info_list</b>",
+        "operationId": "get_/jellyplus-admin/channel-backend/appstore-app-info-list",
+        "parameters": [
+          {
+            "description": "\u6392\u5e8f\u987a\u5e8f\uff0cdesc/asc",
+            "in": "query",
+            "name": "sortorder",
+            "required": false,
+            "schema": {
+              "default": "desc",
+              "description": "\u6392\u5e8f\u987a\u5e8f\uff0cdesc/asc",
+              "title": "Sortorder",
+              "type": "string"
+            }
+          },
+          {
+            "description": "\u6392\u5e8f\u5b57\u6bb5",
+            "in": "query",
+            "name": "sortname",
+            "required": false,
+            "schema": {
+              "description": "\u6392\u5e8f\u5b57\u6bb5",
+              "title": "Sortname",
+              "type": "string"
+            }
+          },
+          {
+            "description": "\u5f53\u524d\u9875\uff0c-1\u8868\u793a\u4e0d\u5206\u9875",
+            "in": "query",
+            "name": "curpage",
+            "required": false,
+            "schema": {
+              "default": -1,
+              "description": "\u5f53\u524d\u9875\uff0c-1\u8868\u793a\u4e0d\u5206\u9875",
+              "title": "Curpage",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "\u6bcf\u9875\u6761\u6570",
+            "in": "query",
+            "name": "pagesize",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "description": "\u6bcf\u9875\u6761\u6570",
+              "title": "Pagesize",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "\u72b6\u6001(1: \u7f16\u8f91\u4e2d, 2: \u5df2\u63a8\u9001)",
+            "in": "query",
+            "name": "state",
+            "required": false,
+            "schema": {
+              "description": "\u72b6\u6001(1: \u7f16\u8f91\u4e2d, 2: \u5df2\u63a8\u9001)",
+              "title": "State",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "\u5ba1\u6838\u72b6\u6001",
+            "in": "query",
+            "name": "audit_state",
+            "required": false,
+            "schema": {
+              "description": "\u5ba1\u6838\u72b6\u6001",
+              "title": "Audit State",
+              "type": "string"
+            }
+          },
+          {
+            "description": "\u641c\u7d22",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "description": "\u641c\u7d22",
+              "title": "Q",
+              "type": "string"
+            }
+          },
+          {
+            "description": "\u6e38\u620f\u5206\u7ec4 id",
+            "in": "query",
+            "name": "gpg_id",
+            "required": false,
+            "schema": {
+              "description": "\u6e38\u620f\u5206\u7ec4 id",
+              "title": "Gpg Id",
+              "type": "string"
+            }
+          },
+          {
+            "description": "\u53d1\u884c\u8d26\u53f7",
+            "in": "query",
+            "name": "release_account",
+            "required": false,
+            "schema": {
+              "description": "\u53d1\u884c\u8d26\u53f7",
+              "title": "Release Account",
+              "type": "string"
+            }
+          },
+          {
+            "description": "fee_code/operation_code",
+            "in": "query",
+            "name": "game",
+            "required": false,
+            "schema": {
+              "description": "fee_code/operation_code",
+              "title": "Game",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppStoreAppInfoListResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntity"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          }
+        },
+        "summary": "\u83b7\u53d6 AppStore APP \u4fe1\u606f\u5217\u8868",
+        "tags": ["channel-backend-admin"]
+      }
+    },
+    "/jellyplus-admin/channel-backend/appstore-app-info/{asai_id}": {
+      "delete": {
+        "description": "delete_appstore_app_info\n\nendpoint: <b>jellyplus_admin.channel_backend.delete_appstore_app_info</b>",
+        "operationId": "delete_/jellyplus-admin/channel-backend/appstore-app-info/{asai_id}",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "asai_id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteAppStoreAppInfoResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntity"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          }
+        },
+        "summary": "\u5220\u9664 AppStore APP \u4fe1\u606f",
+        "tags": ["channel-backend-admin"]
+      },
+      "get": {
+        "description": "get_appstore_app_info\n\nendpoint: <b>jellyplus_admin.channel_backend.get_appstore_app_info</b>",
+        "operationId": "get_/jellyplus-admin/channel-backend/appstore-app-info/{asai_id}",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "asai_id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "\u5feb\u7167 id",
+            "in": "query",
+            "name": "asaid_id",
+            "required": false,
+            "schema": {
+              "description": "\u5feb\u7167 id",
+              "title": "Asaid Id",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "\u8bed\u8a00",
+            "in": "query",
+            "name": "locale",
+            "required": false,
+            "schema": {
+              "description": "\u8bed\u8a00",
+              "title": "Locale",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppStoreAppInfoResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntity"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          }
+        },
+        "summary": "\u83b7\u53d6 AppStore APP \u4fe1\u606f",
+        "tags": ["channel-backend-admin"]
+      },
+      "put": {
+        "description": "edit_appstore_app_info\n\nendpoint: <b>jellyplus_admin.channel_backend.edit_appstore_app_info</b>",
+        "operationId": "put_/jellyplus-admin/channel-backend/appstore-app-info/{asai_id}",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "asai_id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "\u5173\u8054\u5305\u4f53(\u6784\u5efa\u7248\u672c)\u4e3b\u952e id",
+            "in": "query",
+            "name": "asab_ids",
+            "required": false,
+            "schema": {
+              "description": "\u5173\u8054\u5305\u4f53(\u6784\u5efa\u7248\u672c)\u4e3b\u952e id",
+              "items": {
+                "type": "integer"
+              },
+              "title": "Asab Ids",
+              "type": "array"
+            }
+          },
+          {
+            "description": "\u7248\u6743",
+            "in": "query",
+            "name": "copyright",
+            "required": true,
+            "schema": {
+              "description": "\u7248\u6743",
+              "title": "Copyright",
+              "type": "string"
+            }
+          },
+          {
+            "description": "key: \u8bed\u8a00, value: \u6570\u636e",
+            "in": "query",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "additionalProperties": {
+                "$ref": "#/definitions/AppStoreAppInfoData"
+              },
+              "description": "key: \u8bed\u8a00, value: \u6570\u636e",
+              "title": "Data",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EditAppStoreAppInfoResp"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntity"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          }
+        },
+        "summary": "\u7f16\u8f91 AppStore APP \u4fe1\u606f",
+        "tags": ["channel-backend-admin"]
+      }
+    }
+  }
+}

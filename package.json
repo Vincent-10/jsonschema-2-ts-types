@@ -1,0 +1,21 @@
+{
+  "name": "yaml-2-ts",
+  "version": "1.0.0",
+  "description": "Convert JSON Schema to TypeScript types",
+  "main": "src/index.ts",
+  "type": "commonjs",
+  "scripts": {
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "fs-extra": "^11.3.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "@types/fs-extra": "^11.0.4",
+    "tsconfig-paths": "^4.2.0"
+  }
+}
