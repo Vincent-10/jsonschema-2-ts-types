@@ -1,9 +1,10 @@
 import fs from 'fs-extra';
 import path from 'path';
 import { generateTypes, generateOutputFileName } from '@/util/transform';
+import logger from '@/util/logger';
 
 interface GenerateOption {
-  inputFilePath: string;
+  jsonString: string;
   filterPathPrefix?: string[];
   isDirFlat?: boolean; // 是否打平目录结构，默认打平
 }
@@ -40,24 +41,25 @@ function filterPaths(jsonSchema: any, filterPathPrefix: string[]): any {
   };
 }
 
+function getJsonSchema (jsonString: string) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (err) {
+    throw new Error('请确保输入内容是合法的JSON');
+  }
+};
+
 /**
  * 处理生成ts文件
  */
 export async function generate(option: GenerateOption) {
   const { 
-    inputFilePath, 
+    jsonString, 
     filterPathPrefix = [], 
     isDirFlat = true 
   } = option;
 
-  if (!inputFilePath) {
-    throw new Error('Please provide an input JSON Schema file');
-  }
-
-  // 读取并解析 JSON Schema 文件
-  const jsonSchema = await fs.readJSON(inputFilePath, {
-    encoding: 'utf-8',
-  });
+  const jsonSchema = getJsonSchema(jsonString);
 
   // 创建输出目录
   const outputFilePathPrefix = path.resolve(process.cwd(), 'dist');
@@ -83,7 +85,7 @@ export async function generate(option: GenerateOption) {
       // 写入输出文件
       await fs.ensureFile(outputFilePath);
       await fs.writeFile(outputFilePath, typeDefinitions);
-      console.log(`Successfully generated TypeScript types for prefix ${prefix} in ${outputFilePath}`);
+      logger.success(`Successfully generated TypeScript types for prefix ${prefix} in ${outputFilePath}`);
     }
   } else {
     // 不过滤，生成所有类型
@@ -93,6 +95,6 @@ export async function generate(option: GenerateOption) {
     // 写入输出文件
     await fs.ensureFile(outputFilePath);
     await fs.writeFile(outputFilePath, typeDefinitions);
-    console.log(`Successfully generated TypeScript types in ${outputFilePath}`);
+    logger.success(`Successfully generated TypeScript types in ${outputFilePath}`);
   }
 }

@@ -5,11 +5,15 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run-script", "start"],
             "skipFiles": [
                 "<node_internals>/​**​"
             ],
-            "program": "${workspaceFolder}/src/index.ts",
-            "args": ["./static/example.json", "example.ts"],
+            "port": 9229,
+            "cwd": "${workspaceFolder}",
+            // "program": "npm start",
+            "args": ["./static/example.json"],
             "console": "integratedTerminal"
         }
     ]
