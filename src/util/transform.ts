@@ -73,7 +73,7 @@ export const convertType = (prop: SchemaProperty): string => {
 
   // 处理继承（allOf）
   if (prop.allOf && prop.allOf[0]?.$ref) {
-    return `${getTypeFromRef(prop.allOf[0].$ref)}[]`;
+    return `${getTypeFromRef(prop.allOf[0].$ref)}`;
   }
 
   // 处理数组类型

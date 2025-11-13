@@ -25,9 +25,7 @@ function filterPaths(jsonSchema: any, filterPathPrefix: string[]): any {
   // 遍历所有路径
   Object.entries(jsonSchema.paths).forEach(([path, pathContent]) => {
     // 检查路径是否匹配任一前缀
-    const isMatchPrefix = filterPathPrefix.some(prefix => 
-      path.startsWith(prefix)
-    );
+    const isMatchPrefix = filterPathPrefix.some(prefix => path.startsWith(prefix));
 
     if (isMatchPrefix) {
       filteredPaths[path] = pathContent;
@@ -37,27 +35,23 @@ function filterPaths(jsonSchema: any, filterPathPrefix: string[]): any {
   // 创建新的 JSON Schema，只包含过滤后的路径
   return {
     ...jsonSchema,
-    paths: filteredPaths
+    paths: filteredPaths,
   };
 }
 
-function getJsonSchema (jsonString: string) {
+function getJsonSchema(jsonString: string) {
   try {
     return JSON.parse(jsonString);
   } catch (err) {
     throw new Error('请确保输入内容是合法的JSON');
   }
-};
+}
 
 /**
  * 处理生成ts文件
  */
 export async function generate(option: GenerateOption) {
-  const { 
-    jsonString, 
-    filterPathPrefix = [], 
-    isDirFlat = true 
-  } = option;
+  const { jsonString, filterPathPrefix = [], isDirFlat = true } = option;
 
   const jsonSchema = getJsonSchema(jsonString);
 
@@ -71,15 +65,18 @@ export async function generate(option: GenerateOption) {
     for (const prefix of filterPathPrefix) {
       // 过滤指定前缀的路径
       const filteredSchema = filterPaths(jsonSchema, [prefix]);
-      
+      logger.info(Object.keys(filteredSchema.paths).join('\n'));
+      // @ts-ignore
+      logger.info('过滤了', Object.keys(filteredSchema.paths).length, '个路径');
+
       // 生成类型定义
       const typeDefinitions = generateTypes(filteredSchema);
 
       // 根据前缀生成输出文件名
-      const outputFileName = isDirFlat 
+      const outputFileName = isDirFlat
         ? generateOutputFileName(prefix)
         : path.resolve(outputFilePathPrefix, ...prefix.replace(/^\//, '').split(/\//), 'type.ts');
-      
+
       const outputFilePath = path.resolve(outputFilePathPrefix, outputFileName);
 
       // 写入输出文件

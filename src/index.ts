@@ -27,7 +27,10 @@ async function main() {
 
     await generate({
       jsonString,
-      filterPathPrefix: ['/jellyplus-admin/channel-backend', '/easepublish-app/resource'],
+      filterPathPrefix: [
+        '/jellyplus-admin/resource/channel-backend/google',
+        // '/easepublish-app/resource'
+      ],
       isDirFlat: true,
     });
   } catch (error: any) {

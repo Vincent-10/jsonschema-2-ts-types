@@ -16,14 +16,13 @@ npm install
 
 ## 使用方法
 
+例如：
 ```bash
-npx ts-node src/index.ts <input-json-schema-file> [output-ts-file]
+npm start -- ./static/origin.json
 ```
 
-例如：
-
 ```bash
-npx ts-node src/index.ts example.json types.ts
+npm start -- http://7.39.0.11:19408/resource-apidoc/openapi.json
 ```
 
 如果不指定输出文件，将使用输入文件名（改变扩展名为 .ts）作为输出文件名。
